@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<title>JDBC Interview Questions</title>
+<style>
+body{font-family:Arial;background:#f4f6f9;margin:20px}
+h1{text-align:center}
+#search{width:100%;padding:10px;font-size:16px}
+details{background:#fff;margin:10px 0;border-radius:8px;box-shadow:0 2px 5px #ccc}
+summary{padding:12px;font-weight:bold;cursor:pointer;background:#1976d2;color:#fff}
+.answer{padding:12px}
+button{margin:10px;padding:8px 14px}
+</style></head><body>
+<h1>JDBC Interview Questions</h1>
+<input id="search" placeholder="Search questions..." onkeyup="filterQ()">
+<br><button onclick="allOpen(true)">Open All</button>
+<button onclick="allOpen(false)">Close All</button>
+<div id="list">
+<details><summary>Q1. What are the differences between Statement and PreparedStatement?</summary><div class='answer'>PreparedStatement parses once and reuses the query with different parameters. Statement parses the query every execution.</div></details>
+<details><summary>Q2. Why and when PreparedStatement is used?</summary><div class='answer'>When the same query is executed multiple times with different parameters.</div></details>
+<details><summary>Q3. What is a transaction and how you can handle transactions in JDBC?</summary><div class='answer'>A transaction is an atomic unit of work. Handle it using setAutoCommit(false), commit(), and rollback().</div></details>
+<details><summary>Q4. What is a commit and rollback in a transaction?</summary><div class='answer'>Commit permanently saves changes. Rollback undoes uncommitted changes if an exception occurs before commit.</div></details>
+<details><summary>Q5. What is a stored procedure and how can you call it from JDBC?</summary><div class='answer'>A Stored Procedure is a collection of SQL statements stored in the database. Call it using CallableStatement and Connection.prepareCall().</div></details>
+<details><summary>Q6. What are IN, OUT, and INOUT arguments of CallableStatement?</summary><div class='answer'>IN sends values, OUT receives values, INOUT does both.</div></details>
+<details><summary>Q7. How you can retrieve multiple ResultSets from CallableStatement?</summary><div class='answer'>Use getMoreResults() to process multiple ResultSets.</div></details>
+<details><summary>Q8. How you can retrieve a String return value from CallableStatement?</summary><div class='answer'>Use getString().</div></details>
+<details><summary>Q9. What is MetaData and how you can get it?</summary><div class='answer'>Metadata is data about the database. Use ResultSetMetaData or DatabaseMetaData.</div></details>
+<details><summary>Q10. How many types of drivers in JDBC?</summary><div class='answer'>Four: JDBC-ODBC Bridge, Native, Middleware, Pure Java.</div></details>
+<details><summary>Q11. Which type of driver have you used in JDBC?</summary><div class='answer'>Pure Java Driver.</div></details>
+<details><summary>Q12. Where do you find concrete classes of Statement and PreparedStatement?</summary><div class='answer'>In the JDBC driver JAR implementing java.sql interfaces.</div></details>
+<details><summary>Q13. What is a Data connection pool?</summary><div class='answer'>A pool of reusable database connections created at application startup.</div></details>
+<details><summary>Q14. Advantages of a database connection pool?</summary><div class='answer'>Performance, connection reuse, max connection control, supports concurrent users.</div></details>
+<details><summary>Q15. Configure DCP?</summary><div class='answer'>As a DataSource in web applications.</div></details>
+<details><summary>Q16. JDBC Bridge Design Pattern?</summary><div class='answer'>Interfaces + different driver implementations; DriverManager uses Factory pattern.</div></details>
+<details><summary>Q17. What is NBPK?</summary><div class='answer'>An auto-increment primary key with no business meaning.</div></details>
+<details><summary>Q18. How did you create NBPK?</summary><div class='answer'>Auto-increment integer column as primary key.</div></details>
+<details><summary>Q19. Advantage of NBPK?</summary><div class='answer'>Performance, integrity, normalization, simple design.</div></details>
+<details><summary>Q20. Disadvantage of Business Primary Key?</summary><div class='answer'>Business values can change causing foreign-key issues.</div></details>
+<details><summary>Q21. What is normalization?</summary><div class='answer'>Removing redundancy and organizing data.</div></details>
+<details><summary>Q22. Normalization forms?</summary><div class='answer'>1NF, 2NF, 3NF, BCNF.</div></details>
+<details><summary>Q23. Atomic value?</summary><div class='answer'>A value that cannot be divided further.</div></details>
+<details><summary>Q24. What is De-normalization?</summary><div class='answer'>Duplicating data to improve query performance.</div></details>
+<details><summary>Q25. When do you use de-normalization?</summary><div class='answer'>For time-critical reports.</div></details>
+<details><summary>Q26. Why does de-normalization save time?</summary><div class='answer'>Reduces JOIN operations.</div></details>
+<details><summary>Q27. How do you call Stored Procedure and Function from JDBC?</summary><div class='answer'>Using CallableStatement.</div></details>
+<details><summary>Q28. registerOutParameter()?</summary><div class='answer'>Registers an OUT parameter and its JDBC type.</div></details>
+<details><summary>Q29. Disadvantage of Stored Procedure?</summary><div class='answer'>Database dependent.</div></details>
+<details><summary>Q30. When do you use Stored Procedure?</summary><div class='answer'>For high-performance reporting.</div></details>
+<details><summary>Q31. Can you configure DCP in Desktop application?</summary><div class='answer'>Yes, using DCP libraries.</div></details>
+<details><summary>Q32. How many DCP for one Database?</summary><div class='answer'>One DCP per database.</div></details>
+<details><summary>Q33. Which library for DCP?</summary><div class='answer'>C3P0.</div></details>
+<details><summary>Q34. Which jars for C3P0?</summary><div class='answer'>c3p0 and mchange-commons-java.</div></details>
+<details><summary>Q35. Which DCP in Spring Boot?</summary><div class='answer'>HikariCP.</div></details>
+<details><summary>Q36. Can you make application without DCP?</summary><div class='answer'>Not recommended for production.</div></details>
+
+</div>
+<script>
+function allOpen(v){document.querySelectorAll('details').forEach(d=>d.open=v);}
+function filterQ(){
+let f=document.getElementById('search').value.toLowerCase();
+document.querySelectorAll('#list details').forEach(d=>{
+d.style.display=d.innerText.toLowerCase().includes(f)?'block':'none';
+});
+}
+</script></body></html>
